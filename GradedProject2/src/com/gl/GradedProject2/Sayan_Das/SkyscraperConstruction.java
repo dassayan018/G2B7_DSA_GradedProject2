@@ -1,10 +1,9 @@
 package com.gl.GradedProject2.Sayan_Das;
 import java.util.*;
-
-import java.util.*;
-
-public class SkyscraperConstruction {
-    public static void main(String[] args) {
+public class SkyscraperConstruction 
+{
+    public static void main(String[] args) 
+    {
     	Scanner scanner = new Scanner(System.in);
         
         // Input total number of floors
@@ -13,40 +12,34 @@ public class SkyscraperConstruction {
         
         // Input floor sizes for each day
         int[] floorSizes = new int[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) 
+        {
             System.out.println("Enter the floor size given on day " + (i + 1) + ":");
             floorSizes[i] = scanner.nextInt();
-        }		
+        }
+        int q=N;
+        int[] floorSizePresent = new int[N+1];
         
-        // Create a stack to store the assembled floors in descending order
-        Stack<Integer> assembledFloors = new Stack<>();
-        
-        // Output the order of construction
-        System.out.println("\nThe order of construction is as follows:\n");
-        for (int i = 0; i < N; i++) {
-            System.out.println("Day: " + (i + 1));
-            int floorSize = floorSizes[i];
-            boolean assembled = false;
-            
-            // Check for floors that can be assembled
-            while (!assembledFloors.isEmpty()) {
-                int topFloor = assembledFloors.peek();
-                if (floorSize > topFloor) {
-                    System.out.print(topFloor + " ");
-                    assembledFloors.pop();
-                } else {
-                    break;
+        for(int i=0,j=0;i<N;i++,j++)
+        {
+            j=i;
+            floorSizePresent[floorSizes[j]]=1;
+             
+            System.out.println("Day "+(i+1)+":");
+            if(floorSizes[j]==q)
+            {
+                while(j>=0&&q>0&&floorSizePresent[q]==1)
+                {
+                System.out.print(q+" ");
+                q--;
+                j--;
                 }
+                
             }
             
-            // If the current floor can be assembled, add it to the stack
-            assembledFloors.push(floorSize);
-            
-            System.out.println("\n");
-        }
-        
+            System.out.println();
+            }
     }
 }
-
 
 
